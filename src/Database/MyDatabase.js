@@ -20,7 +20,7 @@ const Database = {
     return DBopen.openDB().then((db) => {
       db.exec("DROP TABLE IF EXISTS users");
       db.exec("DROP TABLE IF EXISTS sales");
-      db.exec("DROP TABLE IF EXISTS items ");
+      db.exec("DROP TABLE IF EXISTS items");
       db.close();
     });
   },

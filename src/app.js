@@ -6,6 +6,7 @@ const cors = require("cors");
 const Database = require("../src/Database/MyDatabase.js");
 const cookieParser = require("cookie-parser");
 const userDao = require("./dao/userDao.js");
+require("dotenv").config();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,12 +35,12 @@ userDao.getUsers().then((res) => {
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://192.168.124.35:3000",
+    origin: "http://localhost:3001",
     credentials: true,
   })
 );
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://192.168.124.35:5000"); // Altere para o seu domínio React
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); // Altere para o seu domínio React
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Credentials", "true");

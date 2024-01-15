@@ -7,7 +7,6 @@ const salesDao = {
         "INSERT INTO sales (name, cpf, email, value, moneyChange) VALUES (?, ?, ?, ?, ?)",
         [sales.name, sales.cpf, sales.email, sales.value, sales.moneyChange]
       );
-      db.close();
     });
   },
   async getSales() {
@@ -24,10 +23,7 @@ const salesDao = {
   async getSalesById(id) {
     return DBopen.openDB().then((db) => {
       return db
-        .all(
-          "SELECT name, cpf, email, value, moneyChange FROM sales WHERE id = " +
-            id
-        )
+        .get("SELECT * FROM sales WHERE id = ?", [id])
         .then((res) => res);
     });
   },
