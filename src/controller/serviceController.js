@@ -45,6 +45,18 @@ const employeeController = {
 		}
 	},
 
+	async avaliarServico(req, res) {
+		try {
+			const { id } = req.params;
+			const serviçoAtualizado = new serviceModel(req.body);
+
+			await serviceDao.updateServiceAvaliacao(id, serviçoAtualizado);
+			res.status(200).json({ message: "serviço avaliado com sucesso.", type: "s" });
+		} catch (error) {
+			res.status(500).json({ error: "Erro ao avaliar o serviço.", type: "e" });
+		}
+	},
+
 	async deletarServiço(req, res) {
 		try {
 			const { serviceId } = req.params.id;

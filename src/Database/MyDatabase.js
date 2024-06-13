@@ -4,7 +4,7 @@ const Database = {
 	async createTable() {
 		return DBopen.openDB().then((db) => {
 			db.exec(
-				"CREATE TABLE IF NOT EXISTS services (id INTEGER PRIMARY KEY, userId INTEGER, customer TEXT, service TEXT, date TEXT, hour TEXT, price TEXT)"
+				"CREATE TABLE IF NOT EXISTS services (id INTEGER PRIMARY KEY, userId INTEGER, customer TEXT, service TEXT, date TEXT, hour TEXT, price TEXT, avaliacao INTEGER)"
 			);
 			db.close();
 		});

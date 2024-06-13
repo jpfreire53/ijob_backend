@@ -7,6 +7,7 @@ class serviceModel {
         this.date = service.date;
 		this.hour = service.hour;
         this.price = service.price;
+        this.avaliacao = service.avaliacao;
     }
 }
 

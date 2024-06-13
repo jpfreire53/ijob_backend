@@ -10,5 +10,8 @@ router.use(cookieParser());
 router.post("/registrar", serviceController.criarServiço);
 router.get("/listar", serviceController.listarServiços);
 router.get("/listar/:id", serviceController.listarServiçoPorId);
+router.put("/editar/:id", serviceController.editarServiço);
+router.put("/avaliar/:id", serviceController.avaliarServico);
+router.delete("/deletar/:id", serviceController.deletarServiço);
 
 module.exports = router;
