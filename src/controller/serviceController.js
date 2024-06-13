@@ -33,6 +33,17 @@ const employeeController = {
 		}
 	},
 
+	async listarServiçoDiferentePorId(req, res) {
+		try {
+			const { id } = req.params;
+
+			const service = await serviceDao.getServicesDifferentId(id);
+			res.json(service);
+		} catch (e) {
+			res.status(400).json({ erro: "Erro ao recuperar o serviço: ", type: "e" });
+		}
+	},
+
 	async editarServiço(req, res) {
 		try {
 			const { id } = req.params;
@@ -57,11 +68,11 @@ const employeeController = {
 		}
 	},
 
-	async deletarServiço(req, res) {
+	async deletarServico(req, res) {
 		try {
-			const { serviceId } = req.params.id;
-
-			await serviceDao.deleteServices(serviceId);
+			const { id } = req.params;
+			console.log(id);
+			await serviceDao.deleteServices(id);
 			res.status(200).json({ message: "serviço excluído com sucesso.", type: "s" });
 		} catch (error) {
 			res.status(500).json({ error: "Erro ao excluir o serviço.", type: "e" });

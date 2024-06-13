@@ -34,7 +34,19 @@ const serviceDao = {
         return DBopen.openDB().then((db) =>
             db
                 .all(
-                    "SELECT customer, service, date, hour, price, avaliacao FROM services WHERE userId = ?",
+                    "SELECT id, customer, service, date, hour, price, avaliacao FROM services WHERE userId = ?",
+                    [userId]
+                )
+                .then((res) => res)
+        );
+    },
+
+    async getServicesDifferentId(userId) {
+        console.log(userId);
+        return DBopen.openDB().then((db) =>
+            db
+                .all(
+                    "SELECT id, customer, service, date, hour, price, avaliacao FROM services WHERE userId != ?",
                     [userId]
                 )
                 .then((res) => res)
